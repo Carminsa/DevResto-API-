@@ -1,0 +1,21 @@
+<div class="col s11">
+    <h1>{{ message.name }}</h1>
+    <div class="col s11 center" id="img">
+        <img class="img_home responsive-img" id="img_balise" src="{{ message.img }}" alt="profil" />
+    </div>
+</div>
+
+
+
+<div class="col s11" id="button">
+    <div class="col s5 left">
+        <a href="#" id="dislike"><img id="img_dislike" src="../www/img/dislike.png" alt="dislike"></a>
+    </div>
+    <div class="col s5 right">
+        <a href="#" id="like"><img id="img_like" src="../www/img/love.png" alt="like"></a>
+    </div>
+</div>
+
+<div id="empty" ng-if="message == undefined">
+    <h1>Vous Avez tout vu mdr</h1>
+</div>

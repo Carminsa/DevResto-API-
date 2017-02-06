@@ -4,6 +4,9 @@ namespace DevrestoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class DefaultController extends Controller
 {
@@ -13,5 +16,16 @@ class DefaultController extends Controller
     public function indexAction()
     {
 //        return $this->render('DevrestoBundle:Default:index.html.twig');
+        $response = "toto";
+        return new JsonResponse($response);
+    }
+
+    /**
+     * @Route("/action")
+     */
+    public function testAction()
+    {
+        $response = "test";
+        return new JsonResponse($response);
     }
 }
