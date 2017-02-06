@@ -1,69 +1,31 @@
 <!DOCTYPE html >
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF   ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html data-ng-app="routeApp">
 <head>
     <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-tap-highlight" content="no" />
+    <!--<meta name="format-detection" content="telephone=no" />-->
+    <!--<meta name="msapplication-tap-highlight" content="no" />-->
 
     <!--Angular-->
-    <script type="text/javascript" src="js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular/angular.js"></script>
     <script type="text/javascript" src="js/angular/angular-route.js"></script>
 
     <script type="text/javascript" src="app.js"></script>
 
     <!--<script type="text/javascript" src="js/IndexController.js"></script>-->
 
-    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+
     <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
     <!--<link rel="stylesheet" type="text/css" href="css/style.css" />-->
-    <title>Hello World</title>
+    <title> On mange où ? </title>
 </head>
 <body>
-<div class="col s12">
 
+    <div>
+        <div data-ng-view></div>
+    </div>
 
-
-    <p>test</p>
-    <!--<ul id="dropdown1" class="dropdown-content">-->
-        <!--<li><a href="#/like">Mes Likes</a></li>-->
-        <!--<li class="divider"></li>-->
-        <!--<li><a href="#/block">Bloqués</a></li>-->
-    <!--</ul>-->
-    <!--<nav>-->
-        <!--<div class="nav-wrapper">-->
-            <!--<a href="#!" class="brand-logo left">Feu</a>-->
-            <!--<ul class="right ">-->
-                <!--<li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">dialpad</i></a></li>-->
-            <!--</ul>-->
-        <!--</div>-->
-    <!--</nav>-->
-<!--</div>-->
-<!---->
-<!--<div id="container" class="col s11">-->
-    <!--<div data-ng-view></div>-->
-</div>
-<!---->
-<!---->
-<!--<script type="text/javascript" src="cordova.js"></script>-->
 </body>
 </html>
 

@@ -10,22 +10,20 @@ routeApp.config(['$routeProvider',
 
         $routeProvider
             .when('/', {
-                templateUrl: 'views/default/homes.html',
-                controller: 'index'
-            })
-            .otherwise({
-                redirectTo: '/user'
+                templateUrl: 'views/default/home.html',
+                controller: 'IndexController'
             });
+            // .otherwise({
+            //     redirectTo: '/user'
+            // });
     }
 ]);
 
 let routeAppControllers = angular.module('routeAppControllers', []);
 
-routeAppControllers.controller('index', ['$scope', '$http',
+routeAppControllers.controller('IndexController', ['$scope', '$http',
     function($scope , $http){
-
         console.log("test 1");
-
         $http({
             method: 'GET',
             url: 'http://localhost:8000/'
