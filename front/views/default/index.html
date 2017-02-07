@@ -23,42 +23,23 @@
 
    <h3>Pas encore inscrit ? </h3>
 
+   <div ng-controller="RegisterController">
 
-   <div ng-controller="testController">
       <form novalidate class="simple-form">
-         <input type="text" ng-model="login" value="Reset" />
-         <input type="submit" ng-click="update()" value="Save" />
+
+         <label for="login">Votre Login : </label>
+         <input type="text" ng-model="login" id="login">
+
+         <label for="lastname">Votre Nom de Famille</label>
+         <input type="text" ng-model="lastname" id="lastname">
+
+         <label for="firstname">Votre Prénom : </label>
+         <input type="text" ng-model="firstname" id="firstname">
+
+         <label for="password">Votre Mot de Passe  : </label>
+         <input type="text" ng-model="password" id="password">
+
+         <input type="submit" ng-click="send()" value="S'inscrire" >
       </form>
    </div>
-
-
-
-
-
-   <!--<div>-->
-   <!--<form action="http://localhost/TechChallenge/front/#!/register" method="post">-->
-   <!---->
-   <!---->
-   <!--<label for="login">Votre Login : </label>-->
-   <!--<input type="text" id="login" name="login" ng-model="allo" required>-->
-
-   <!--<label for="firstname">Votre Prénom : </label>-->
-   <!--<input type="text" id="firstname" name="firstname" ng-model="user.firstname" required>-->
-   <!---->
-   <!--<label for="lastname">Votre Nom de Famille : </label>-->
-   <!--<input type="text" id="lastname" name="lastname" ng-model="user.lastname" required>-->
-   <!---->
-   <!--<label for="password">Votre mot de passe : </label>-->
-   <!--<input type="text" id="password" name="password" ng-model="user.password" required>-->
-
-   <!--<input type="submit" value="S'inscire">-->
-   <!---->
-   <!--</form>-->
-   <!--</div>-->
-
-
-
-
-
-
 </div>

@@ -39,61 +39,28 @@ routeAppControllers.controller('IndexController', ['$scope', '$http',
     }
 ]);
 
-// routeAppControllers.controller('HomeController',  ['$scope', '$http',
-//     function($scope , $http){
-//
-//         console.log($scope.allo);
-//
-//         let data = $.param({
-//             fName: $scope.login,
-//         });
-//
-//
-//         let config = {
-//             headers: {
-//                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-//             }
-//         };
-//
-//         $http.post('http://127.0.0.1:8000/register', data, config)
-//             .then(function (data, status) {
-//                 $scope.PostDataResponse = data;
-//                 console.log(data);
-//             }).catch(function(data,status){
-//             $scope.ResponseDetails = "Data: " + data +
-//                 "<hr />status: " + status ;
-//         })
-//     }
-// ]);
+routeAppControllers.controller('RegisterController', ['$scope', '$http',function($scope, $http) {
 
-routeAppControllers.controller('testController', ['$scope', '$http',function($scope, $http) {
-
-    $scope.update = function () {
-
-        console.log($scope.login);
+    $scope.send = function () {
 
         var data = {
-            name : $scope.login
+            login    : $scope.login,
+            lastname : $scope.lastname,
+            firstname : $scope.firstname,
+            password : $scope.password
         };
 
-        $http.post("http://localhost:8000/register", {login : $scope.login})
-            .success(function(data, status, headers, config) {
-                //$scope.data = data;
-                console.log(data);
-            }).error(function(data, status, headers, config) {
-                    console.log("http post function");
-            //$scope.status = status;
-        });
+        $http.post("http://localhost:8000/register", data)
 
-        // $http.post("http://localhost:8000/register", data)
-        //     .success(function (data) {
-        //         // $scope.PostDataResponse = data;
-        //         console.log(data);
-        //         console.log("http post function");
-        //
-        //     }).error(function(data, status){
-        //         console.log(data);
-        // });
+            .then(function(response) {
+                // $scope.data = data;
+                console.log(response.data);
+            })
+
+            .catch(function(data, status) {
+                $scope.status = status;
+                console.log(data);
+            });
     }
 }]);
 

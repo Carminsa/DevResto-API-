@@ -27,10 +27,15 @@ class DefaultController extends Controller
      */
     public function registerAction(Request $request)
     {
-        if ($request->isXMLHttpRequest()) {
-            return new JsonResponse(array('data' => 'this is a json response'));
-        }
+        $data = json_decode($request->getContent(), true);
 
-        return new Response('This is not ajax!', 400);
+        $user = new User();
+
+
+
+
+
+        var_dump($data['login']);
+        return new Response($data, 200);
     }
 }
