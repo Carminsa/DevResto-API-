@@ -26,7 +26,7 @@ routeAppControllers.controller('IndexController', ['$scope', '$http',
         console.log("test 1");
         $http({
             method: 'GET',
-            url: 'http://localhost:8000/'
+            url: 'http://127.0.0.1:8000'
         }).then(function successCallback(response) {
             console.log(response);
             // if (response.data.length > 0) {
