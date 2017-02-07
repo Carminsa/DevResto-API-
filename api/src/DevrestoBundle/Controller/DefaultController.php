@@ -17,7 +17,6 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-//        return $this->render('DevrestoBundle:Default:index.html.twig');
         $response = "toto";
         return new JsonResponse($response);
     }
@@ -27,15 +26,27 @@ class DefaultController extends Controller
      */
     public function registerAction(Request $request)
     {
+        $count = 0;
         $data = json_decode($request->getContent(), true);
 
         $user = new User();
 
+        $user->setLogin($data['login']);
+        $user->setLastname($data['lastname']);
+        $user->setFirstname($data['firstname']);
+        $user->setPassword($data['password']);
 
+        $validator = $this->get('validator');
+        $listErrors = $validator->validate($user);
 
-
-
-        var_dump($data['login']);
-        return new Response($data, 200);
+        if (count($listErrors) > 0) {
+            return new Response("false", 404);
+        } else {
+            $query = $this->getDoctrine()->getManager();
+            $query->persist($user);
+            $query->flush();
+            $count++;
+            return new Response("true", 200);
+        }
     }
 }
