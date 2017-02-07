@@ -4,6 +4,7 @@
    <h3>Se Connecter </h3>
 
    <div>
+
       <form action="http://localhost/TechChallenge/front/#!/login" method="post">
 
          <label for="login_log">Votre Login : </label>
@@ -22,25 +23,42 @@
 
    <h3>Pas encore inscrit ? </h3>
 
-   <div>
-      <form action="/register" method="post">
 
-         <label for="login">Votre Login : </label>
-         <input type="text" id="login" name="login" required>
-
-         <label for="firstname">Votre Prénom : </label>
-         <input type="text" id="firstname" name="firstname" required>
-
-         <label for="lastname">Votre Prénom : </label>
-         <input type="text" id="lastname" name="lastname" required>
-
-         <label for="password">Votre Prénom : </label>
-         <input type="text" id="password" name="password" required>
-
-         <input type="submit" value="S'inscire">
-
+   <div ng-controller="testController">
+      <form novalidate class="simple-form">
+         <input type="text" ng-model="login" value="Reset" />
+         <input type="submit" ng-click="update()" value="Save" />
       </form>
    </div>
+
+
+
+
+
+   <!--<div>-->
+   <!--<form action="http://localhost/TechChallenge/front/#!/register" method="post">-->
+   <!---->
+   <!---->
+   <!--<label for="login">Votre Login : </label>-->
+   <!--<input type="text" id="login" name="login" ng-model="allo" required>-->
+
+   <!--<label for="firstname">Votre Prénom : </label>-->
+   <!--<input type="text" id="firstname" name="firstname" ng-model="user.firstname" required>-->
+   <!---->
+   <!--<label for="lastname">Votre Nom de Famille : </label>-->
+   <!--<input type="text" id="lastname" name="lastname" ng-model="user.lastname" required>-->
+   <!---->
+   <!--<label for="password">Votre mot de passe : </label>-->
+   <!--<input type="text" id="password" name="password" ng-model="user.password" required>-->
+
+   <!--<input type="submit" value="S'inscire">-->
+   <!---->
+   <!--</form>-->
+   <!--</div>-->
+
+
+
+
 
 
 </div>
