@@ -10,12 +10,16 @@ routeApp.config(['$routeProvider',
 
         $routeProvider
             .when('/', {
-                templateUrl: 'views/default/home.html',
+                templateUrl: 'views/default/index.html',
                 controller: 'IndexController'
+            })
+            .when('/login',{
+                templateUrl: 'views/default/home.html',
+                controller: 'HomeController'
+            })
+            .otherwise({
+                redirectTo: '/user'
             });
-            // .otherwise({
-            //     redirectTo: '/user'
-            // });
     }
 ]);
 
@@ -23,7 +27,6 @@ let routeAppControllers = angular.module('routeAppControllers', []);
 
 routeAppControllers.controller('IndexController', ['$scope', '$http',
     function($scope , $http){
-        console.log("test 1");
         $http({
             method: 'GET',
             url: 'http://127.0.0.1:8000'
@@ -35,3 +38,19 @@ routeAppControllers.controller('IndexController', ['$scope', '$http',
         });
     }
 ]);
+
+
+routeAppControllers.controller('HomeController', ['$scope', '$http',
+    function($scope , $http){
+        $http({
+            method: 'GET',
+            url: 'http://127.0.0.1:8000/register'
+        }).then(function successCallback(response) {
+            console.log(response);
+            // if (response.data.length > 0) {
+            //     $scope.message = response.data[0];
+            // }
+        });
+    }
+]);
+

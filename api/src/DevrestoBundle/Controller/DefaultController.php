@@ -21,11 +21,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/action")
+     * @Route("/register")
      */
-    public function testAction()
+    public function registerAction(Request $request)
     {
-        $response = "test";
-        return new JsonResponse($response);
+
     }
 }
