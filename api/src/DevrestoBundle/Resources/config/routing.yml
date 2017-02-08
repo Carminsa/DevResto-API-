@@ -1,0 +1,15 @@
+default_homepage:
+    path: /
+    defaults:  { _controller: DevrestoBundle:Default:index }
+
+default_register:
+    path: /register
+    defaults:  { _controller: DevrestoBundle:Default:register }
+
+default_login:
+    path: /login
+    defaults:  { _controller: DevrestoBundle:Default:login }
+
+home_home:
+    path: /home
+    defaults:  { _controller: DevrestoBundle:Home:index }

@@ -72,7 +72,7 @@ routeAppControllers.controller('LoginController', ['$scope', '$http', '$window',
                 // $route.reload();
 
                 if(data.data == "true" ){
-                    $window.location.href = '#/';
+                    $window.location.href = '#/home';
                 }
 
             })

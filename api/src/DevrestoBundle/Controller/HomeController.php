@@ -13,9 +13,17 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class HomeController extends Controller
 {
+
     public function indexAction()
     {
+        if ($this->container->get('session')->isStarted() === true)
+        {
+            return new Response("true", 200);
+        }
 
+        else {
+            return new Response("false", 404);
+        }
     }
 
 }

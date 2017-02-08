@@ -3,7 +3,7 @@
 namespace DevrestoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+//use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use DevrestoBundle\Entity\App\User;
@@ -14,9 +14,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class DefaultController extends Controller
 {
 
-    /**
-     * @Route("/")
-     */
+
     public function indexAction(Request $request)
     {
 //
@@ -34,17 +32,15 @@ class DefaultController extends Controller
 //            }
 //
 //
-//        var_dump($this->get('session')->get('login_user'));
-//        die;
+        var_dump($this->get('session')->get('login_user'));
+        die;
 //
         return $this->render('default/index.html.twig');
 //        $response = "toto";
 //        return new JsonResponse($response);
     }
 
-    /**
-     * @Route("/register")
-     */
+
     public function registerAction(Request $request)
     {
 
@@ -73,9 +69,7 @@ class DefaultController extends Controller
             return new Response("true", 200);
         }
     }
-    /**
-     * @Route("/login")
-     */
+
     public function loginAction(Request $request)
     {
 

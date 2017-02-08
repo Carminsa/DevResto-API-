@@ -1,6 +1,5 @@
 devresto:
-    resource: "@DevrestoBundle/Controller/"
-    type:     annotation
+    resource: "@DevrestoBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:
