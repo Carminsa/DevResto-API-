@@ -12,14 +12,14 @@ routeApp.config(['$routeProvider',
             .when('/', {
                 templateUrl: 'views/auth/index.html',
                 controller: 'IndexController'
-            })
-            .when('/register',{
-                templateUrl: 'views/auth/index.html',
-                controller: 'RegisterController'
-            })
-            .when('/login',{
-                templateUrl: 'views/auth/index.html',
-                controller: 'LoginController'
+            // })
+            // .when('/register',{
+            //     templateUrl: 'views/auth/index.html',
+            //     controller: 'RegisterController'
+            // })
+            // .when('/login',{
+            //     templateUrl: 'views/auth/index.html',
+            //     controller: 'LoginController'
                 // .otherwise({
                 //     redirectTo: '/user'
             });

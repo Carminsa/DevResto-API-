@@ -1,9 +1,8 @@
-<div class="">
+<div ng-controller="LoginController">
 
     <h3>Se Connecter </h3>
 
-
-    <form action="#/login">
+    <form>
 
         <label for="login_log">Votre Login : </label>
         <input type="text" id="login_log" ng-model="login_log" required>
@@ -17,12 +16,12 @@
 </div>
 
 
-<div>
+<div ng-controller="RegisterController">
     <br />
 
     <h3>Pas encore inscrit ? </h3>
 
-    <form action="#/register">
+    <form>
 
         <label for="login">Votre Login : </label>
         <input type="text" ng-model="login" id="login" required>
@@ -37,5 +36,6 @@
         <input type="text" ng-model="password" id="password" required>
 
         <input type="submit" ng-click="send()" value="S'inscrire" >
+
     </form>
 </div>

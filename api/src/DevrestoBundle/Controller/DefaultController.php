@@ -9,14 +9,34 @@ use Symfony\Component\HttpFoundation\Request;
 use DevrestoBundle\Entity\App\User;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+//
+//        $em = $this->getDoctrine()->getManager();
+//        $user = $em->getRepository('DevrestoBundle\Entity\App\User')->findOneBy(array(
+//            'login' => 'root',
+//            'password' => 'root'
+//        ));
+//
+//        if ($user){
+//            $session = $request->getSession();
+//            $session->start();
+//            $this->get('session')->set('id_user', $user->getId());
+//            $this->get('session')->set('login_user', $user->getLogin());
+//            }
+//
+//
+//        var_dump($this->get('session')->get('login_user'));
+//        die;
+//
+//        return $this->render('default/index.html.twig', array('user' => $user));
         $response = "toto";
         return new JsonResponse($response);
     }
@@ -58,6 +78,27 @@ class DefaultController extends Controller
     public function loginAction(Request $request)
     {
 
-        return new Response("true", 200);
+        $data = json_decode($request->getContent(), true);
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('DevrestoBundle\Entity\App\User')->findOneBy(array(
+            'login' => $data['login_log'],
+            'password' => $data['password_log']
+        ));
+
+        if ($user){
+            $session = $request->getSession();
+            $session->start();
+            $this->get('session')->set('id_user', $user->getId());
+            $this->get('session')->set('login_user', $user->getLogin());
+//            var_dump($user);
+            return new Response("true", 200);
+        }
+
+        else {
+            return new Response("false", 404);
+        }
+
+
     }
 }

@@ -14,7 +14,7 @@ routeAppControllers.controller('IndexController', ['$scope', '$http',
     }
 ]);
 
-routeAppControllers.controller('RegisterController', ['$scope', '$http',function ($scope, $http) {
+routeAppControllers.controller('RegisterController', ['$scope', '$http', '$window', '$route', function ($scope, $http, $window, $route) {
 
     $scope.send = function () {
 
@@ -38,6 +38,8 @@ routeAppControllers.controller('RegisterController', ['$scope', '$http',function
                 // $scope.data = data;
                 console.log('success');
                 console.log(data);
+                $route.reload();
+                // $window.location.href = '#/';
             })
 
             .catch(function(data, status) {
@@ -47,7 +49,7 @@ routeAppControllers.controller('RegisterController', ['$scope', '$http',function
     }
 }]);
 
-routeAppControllers.controller('LoginController', ['$scope', '$http',function ($scope, $http) {
+routeAppControllers.controller('LoginController', ['$scope', '$http', '$window', '$route', function ($scope, $http, $window, $route) {
 
     $scope.logForm = function () {
         console.log(1);
@@ -64,13 +66,18 @@ routeAppControllers.controller('LoginController', ['$scope', '$http',function ($
 
         $http.post("http://localhost:8000/login", data, config)
 
-            .then(function successLog(data) {
+            .then(function (data) {
                 // $scope.data = data;
                 console.log('success');
-                console.log(data);
+                // $route.reload();
+
+                if(data.data == "true" ){
+                    $window.location.href = '#/';
+                }
+
             })
 
-            .catch(function errorLog(data, status) {
+            .catch(function (data, status) {
                 // $scope.status = status;
                 console.log(data + ' => ' + status);
             });
