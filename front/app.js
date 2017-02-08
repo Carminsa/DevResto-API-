@@ -12,10 +12,10 @@ routeApp.config(['$routeProvider',
             .when('/', {
                 templateUrl: 'views/default/index.html',
                 controller: 'IndexController'
-            // })
-            // .when('/register',{
-            //     templateUrl: 'views/default/home.html',
-            //     controller: 'HomeController'
+            })
+            .when('/register',{
+                templateUrl: 'views/default/index.html',
+                controller: 'RegisterController'
                 // })
                 // .otherwise({
                 //     redirectTo: '/user'
@@ -30,8 +30,8 @@ routeAppControllers.controller('IndexController', ['$scope', '$http',
         $http({
             method: 'GET',
             url: 'http://127.0.0.1:8000'
-        // }).then(function successCallback(response) {
-        //     console.log(response);
+            // }).then(function successCallback(response) {
+            //     console.log(response);
             // if (response.data.length > 0) {
             //     $scope.message = response.data[0];
             // }
@@ -39,19 +39,24 @@ routeAppControllers.controller('IndexController', ['$scope', '$http',
     }
 ]);
 
-routeAppControllers.controller('RegisterController', ['$scope', '$http',function($scope, $http, $location) {
+routeAppControllers.controller('RegisterController', ['$scope', '$http',function($scope, $http) {
 
     $scope.send = function () {
 
-        console.log(2);
-        var data = {
+        let data = {
             login     : $scope.login,
             lastname  : $scope.lastname,
             firstname : $scope.firstname,
             password  : $scope.password
         };
 
-        $http.post("http://localhost:8000/register", data)
+        let config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+            }
+        };
+
+        $http.post("http://localhost:8000/register", data, config)
 
             .then(function(data) {
                 // $scope.data = data;
@@ -63,7 +68,6 @@ routeAppControllers.controller('RegisterController', ['$scope', '$http',function
                 // $scope.status = status;
                 console.log(data + ' => ' + status);
             });
-        console.log(3);
     }
 }]);
 

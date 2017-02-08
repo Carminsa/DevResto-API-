@@ -26,7 +26,7 @@ class DefaultController extends Controller
      */
     public function registerAction(Request $request)
     {
-        $count = 0;
+
         $data = json_decode($request->getContent(), true);
 
         $user = new User();
@@ -38,6 +38,7 @@ class DefaultController extends Controller
 
         $validator = $this->get('validator');
         $listErrors = $validator->validate($user);
+        
 
         if (count($listErrors) > 0) {
             return new Response("false", 404);
@@ -45,7 +46,7 @@ class DefaultController extends Controller
             $query = $this->getDoctrine()->getManager();
             $query->persist($user);
             $query->flush();
-            $count++;
+
             return new Response("true", 200);
         }
     }
