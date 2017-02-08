@@ -29,6 +29,8 @@ class DefaultController extends Controller
 
         $data = json_decode($request->getContent(), true);
 
+        var_dump($data);
+
         $user = new User();
 
         $user->setLogin($data['login']);
@@ -49,5 +51,13 @@ class DefaultController extends Controller
 
             return new Response("true", 200);
         }
+    }
+    /**
+     * @Route("/login")
+     */
+    public function loginAction(Request $request)
+    {
+
+        return new Response("true", 200);
     }
 }
