@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class DefaultController extends Controller
 {
+
     /**
      * @Route("/")
      */
@@ -36,9 +37,9 @@ class DefaultController extends Controller
 //        var_dump($this->get('session')->get('login_user'));
 //        die;
 //
-//        return $this->render('default/index.html.twig', array('user' => $user));
-        $response = "toto";
-        return new JsonResponse($response);
+        return $this->render('default/index.html.twig');
+//        $response = "toto";
+//        return new JsonResponse($response);
     }
 
     /**
@@ -60,7 +61,7 @@ class DefaultController extends Controller
 
         $validator = $this->get('validator');
         $listErrors = $validator->validate($user);
-        
+
 
         if (count($listErrors) > 0) {
             return new Response("false", 404);
