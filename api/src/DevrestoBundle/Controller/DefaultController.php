@@ -36,15 +36,15 @@ class DefaultController extends Controller
 //        die;
 
 
-        $repository = $this->getDoctrine()->getRepository('DevrestoBundle\Entity\App\Product');
-        $products = $repository->findAll();
-
-        var_dump($products);
-        die;
-
-        return $this->render('default/index.html.twig', array('products' => $products));
-//        $response = "toto";
-//        return new JsonResponse($response);
+//        $repository = $this->getDoctrine()->getRepository('DevrestoBundle\Entity\App\Product');
+//        $products = $repository->findAll();
+//
+//        var_dump($products);
+//        die;
+//
+//        return $this->render('default/index.html.twig', array('products' => $products));
+        $response = "toto";
+        return new JsonResponse($response);
     }
 
 

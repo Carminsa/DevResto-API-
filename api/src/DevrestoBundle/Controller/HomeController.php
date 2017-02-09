@@ -20,15 +20,16 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class HomeController extends Controller
 {
-    protected $encoders;
-    protected $normalizers;
-    protected $serializer;
+    private $encoders;
+    private $normalizers;
+    private $serializer;
+    private $session;
 
     public function __construct()
     {
         $encoders = $this->encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = $this->normalizers = array(new ObjectNormalizer());
-        $serializer = $this->serializer = new Serializer($normalizers, $encoders);
+        $this->serializer = new Serializer($normalizers, $encoders);
     }
 
     public function indexAction()
@@ -42,13 +43,9 @@ class HomeController extends Controller
             $products = $repository->findAll();
 
 
-          $this->serializer = new Serializer($this->normalizers, $this->encoders);
+            $this->serializer = new Serializer($this->normalizers, $this->encoders);
 
-            $jsonContent = $this->serializer->serialize($products, 'json');
-            var_dump($jsonContent);
-            die;
-
-            $t ="jdopfjsd";
+            $products = $this->serializer->serialize($products, 'json');
             return new Response($products);
 
         }
