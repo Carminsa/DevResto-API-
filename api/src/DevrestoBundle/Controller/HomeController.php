@@ -16,11 +16,30 @@ class HomeController extends Controller
 
     public function indexAction()
     {
-        if ($this->container->get('session')->isStarted() === true)
-        {
-            return new Response("true", 200);
-        }
+        $session = $this->get('session');
 
+        if (isset($session))
+        {
+
+            $repository = $this->getDoctrine()->getRepository('DevrestoBundle\Entity\App\Product');
+            $products = $repository->findAll()->toArray();
+
+
+            foreach ($products as $value)
+            {
+                foreach ($value as $v)
+                {
+                    var_dump($v);
+                }
+
+            }
+
+        die;
+
+            $t ="jdopfjsd";
+            return new Response($products);
+
+        }
         else {
             return new Response("false", 404);
         }

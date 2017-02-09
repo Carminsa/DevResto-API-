@@ -32,10 +32,17 @@ class DefaultController extends Controller
 //            }
 //
 //
-        var_dump($this->get('session')->get('login_user'));
+//        var_dump($this->get('session')->get('login_user'));
+//        die;
+
+
+        $repository = $this->getDoctrine()->getRepository('DevrestoBundle\Entity\App\Product');
+        $products = $repository->findAll();
+
+        var_dump($products);
         die;
-//
-        return $this->render('default/index.html.twig');
+
+        return $this->render('default/index.html.twig', array('products' => $products));
 //        $response = "toto";
 //        return new JsonResponse($response);
     }
@@ -86,7 +93,6 @@ class DefaultController extends Controller
             $session->start();
             $this->get('session')->set('id_user', $user->getId());
             $this->get('session')->set('login_user', $user->getLogin());
-//            var_dump($user);
             return new Response("true", 200);
         }
 

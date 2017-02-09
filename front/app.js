@@ -17,11 +17,11 @@ routeApp.config(['$routeProvider',
                 templateUrl: 'views/home/index.html',
                 controller: 'HomeController'
             })
-            .when('/login',{
+            // .when('/login',{
             //     templateUrl: 'views/auth/index.html',
             //     controller: 'LoginController'
-                // .otherwise({
-                //     redirectTo: '/user'
+                .otherwise({
+                    redirectTo: '/'
             });
     }
 ]);
