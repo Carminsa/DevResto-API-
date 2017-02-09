@@ -11,8 +11,25 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Session\Session;
 
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+
+
+
 class HomeController extends Controller
 {
+    protected $encoders;
+    protected $normalizers;
+    protected $serializer;
+
+    public function __construct()
+    {
+        $encoders = $this->encoders = array(new XmlEncoder(), new JsonEncoder());
+        $normalizers = $this->normalizers = array(new ObjectNormalizer());
+        $serializer = $this->serializer = new Serializer($normalizers, $encoders);
+    }
 
     public function indexAction()
     {
@@ -22,19 +39,14 @@ class HomeController extends Controller
         {
 
             $repository = $this->getDoctrine()->getRepository('DevrestoBundle\Entity\App\Product');
-            $products = $repository->findAll()->toArray();
+            $products = $repository->findAll();
 
 
-            foreach ($products as $value)
-            {
-                foreach ($value as $v)
-                {
-                    var_dump($v);
-                }
+          $this->serializer = new Serializer($this->normalizers, $this->encoders);
 
-            }
-
-        die;
+            $jsonContent = $this->serializer->serialize($products, 'json');
+            var_dump($jsonContent);
+            die;
 
             $t ="jdopfjsd";
             return new Response($products);
