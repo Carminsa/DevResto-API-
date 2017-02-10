@@ -1,7 +1,10 @@
 <div ng-repeat="res in data">
+
     <ul>
         <li>{{ res.name }}</li>
         <li>{{ res.cost }} € </li>
     </ul>
-    <input type="button" value="Add To cart">
+
+    <button ng-click="send(res.id)" value="{{ res.id }}">Add to cart</button>
+
 </div>
