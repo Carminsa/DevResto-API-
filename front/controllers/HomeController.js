@@ -37,7 +37,7 @@ routeAppControllers.controller('HomeController', ['$scope', '$http', '$cookies',
                 .then(function(data) {
                     // $scope.data = data;
                     console.log('Home');
-                    console.log(data.data);
+                    console.log(data);
                     // $route.reload();
                     // $window.location.href = '#/';
                 })

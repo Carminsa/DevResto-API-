@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 //use Symfony\Component\HttpFoundation\Cookie;
 
+use DevrestoBundle\Entity\App\Purchase;
 
 
 class DefaultController extends Controller
@@ -19,6 +20,12 @@ class DefaultController extends Controller
 
     public function indexAction(Request $request)
     {
+
+
+//        return $this->render('default/index.html.twig', array('products' => $last_purchase  ));
+
+        $response = "toto";
+        return new JsonResponse($response);
         //
 //        $em = $this->getDoctrine()->getManager();
 //        $user = $em->getRepository('DevrestoBundle\Entity\App\User')->findOneBy(array(
@@ -43,10 +50,41 @@ class DefaultController extends Controller
 //        var_dump($products);
 //        die;
 //
-//        return $this->render('default/index.html.twig', array('products' => $products));
 
-        $response = "toto";
-        return new JsonResponse($response);
+        $em = $this->getDoctrine()->getManager();
+        $last_purchase = $em->getRepository('DevrestoBundle\Entity\App\Purchase');
+        $last_purchase = $last_purchase->findBy(array(
+            'userId' => 1,
+        ));
+        $last_purchase = end($last_purchase);
+        $last_time = $last_purchase->getcreated_at()->format('Y-m-d H:i:s');
+
+        $last_purchase->setProducts('gsdghsdioghsdiog');
+        $last_purchase->setCreatedAt(new \DateTime());
+        $em->flush();
+
+        print_r($last_purchase);
+        die;
+
+        $date = date('Y-m-d H:i:s', strtotime('-15 minutes'));
+
+        if ($last_purchase <  $date)
+        {
+            echo "yes" . "\n";
+        }
+        else {
+            echo "non" . "\n";
+        }
+
+        print_r($last_purchase);
+
+        echo "-----------------";
+
+        print_r($date);
+        die;
+
+//        $last_purchase = count($last_purchase)-1;
+
     }
 
 

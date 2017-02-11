@@ -24,9 +24,9 @@ class Purchase
     /**
      * @var int
      *
-     * @ORM\Column(name="id_user", type="integer")
+     * @ORM\Column(name="user_id", type="integer")
      */
-    private $idUser;
+    private $userId;
 
     /**
      * @var string
@@ -54,27 +54,27 @@ class Purchase
     }
 
     /**
-     * Set idUser
+     * Set userId
      *
-     * @param integer $idUser
+     * @param integer $userId
      *
      * @return Purchase
      */
-    public function setIdUser($idUser)
+    public function setuser_id($userId)
     {
-        $this->idUser = $idUser;
+        $this->userId = $userId;
 
         return $this;
     }
 
     /**
-     * Get idUser
+     * Get userId
      *
      * @return int
      */
-    public function getIdUser()
+    public function getuser_id()
     {
-        return $this->idUser;
+        return $this->userId;
     }
 
     /**
@@ -116,11 +116,11 @@ class Purchase
     }
 
     /**
-     * Get createdAt
+     * Get created_at
      *
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreated_at()
     {
         return $this->createdAt;
     }
