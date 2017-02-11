@@ -109,10 +109,7 @@ class DefaultController extends Controller
         ));
 
         if ($user){
-
-            //$session = new Session();
             $session = $request->getSession();
-            //$session->start();
             $session->set('id_user', $user->getId());
             $session->set('login_user', $user->getLogin());
             $session->save();

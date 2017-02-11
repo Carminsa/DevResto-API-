@@ -24,40 +24,16 @@ class HomeController extends Controller
     private $normalizers;
     private $serializer;
 
-    public function __construct(Request $request, $token = null)
+    public function __construct()
     {
         $encoders = $this->encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = $this->normalizers = array(new ObjectNormalizer());
         $this->serializer = new Serializer($normalizers, $encoders);
     }
 
-//    public function beforeAction(Request $request = null, $token = null)
-//    {
-//
-//        $em = $this->getDoctrine()->getManager();
-//        $user = $em->getRepository('DevrestoBundle\Entity\App\User')->findOneBy(array(
-//            'token' => $token,
-//        ));
-//
-//        if ($user)
-//        {
-//            $session = $request->getSession();
-//            $session->set('id_user', $user->getId());
-//            $session->set('login_user', $user->getLogin());
-//            $session->save();
-//            return $session;
-//        } else {
-//            return false;
-//        }
-//    }
-
 
     public function indexAction()
     {
-//        $session = $this->get('session');
-//
-//        if (isset($session))
-//        {
 
         $repository = $this->getDoctrine()->getRepository('DevrestoBundle\Entity\App\Product');
         $products = $repository->findAll();
@@ -67,27 +43,40 @@ class HomeController extends Controller
         $products = $this->serializer->serialize($products, 'json');
         return new Response($products);
 
-//        }
-//        else {
-//            return new Response("false", 404);
-//        }
     }
 
     public function addAction(Request $request)
     {
-
+        $products = '';
         $data = json_decode($request->getContent(), true);
 
-//        $test = $data['token'];
-//        $product = new Purchase();
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('DevrestoBundle\Entity\App\User')->findOneBy(array(
+            'token' => $data['token'],
+        ));
 
-//        $product->setIdUser($this->get('session')->get('id_user'));
-//        $product->setProducts('test');
-//        $product->setCreatedAt(new \DateTime());
-//        $query = $this->getDoctrine()->getManager();
-//        $query->persist($product);
-//        $query->flush();
 
+        foreach ($data['products'] as $value)
+        {
+            $products .= $value . ', ';
+
+        }
+
+        if ($user){
+
+            $session = $request->getSession();
+            $session->set('id_user', $user->getId());
+            $session->set('login_user', $user->getLogin());
+            $session->save();
+
+            $product = new Purchase();
+            $product->setIdUser($this->get('session')->get('id_user'));
+            $product->setProducts($products);
+            $product->setCreatedAt(new \DateTime());
+            $query = $this->getDoctrine()->getManager();
+            $query->persist($product);
+            $query->flush();
+        }
 
         return new Response("true", 200);
     }

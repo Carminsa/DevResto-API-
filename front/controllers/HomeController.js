@@ -17,7 +17,9 @@ routeAppControllers.controller('HomeController', ['$scope', '$http', '$cookies',
         });
 
         $scope.send = function(id){
+
             cart.push(id);
+
             var myToken = $cookies.get('DevResto');
 
             var purchase = {
@@ -35,7 +37,7 @@ routeAppControllers.controller('HomeController', ['$scope', '$http', '$cookies',
                 .then(function(data) {
                     // $scope.data = data;
                     console.log('Home');
-                    console.log(data);
+                    console.log(data.data);
                     // $route.reload();
                     // $window.location.href = '#/';
                 })
