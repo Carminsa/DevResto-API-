@@ -2,8 +2,11 @@
 
 let routeApp = angular.module('routeApp', [
     'ngRoute',
-    'routeAppControllers'
+    'routeAppControllers',
+    'ngCookies',
 ]);
+
+
 
 routeApp.config(['$routeProvider',
     function($routeProvider) {

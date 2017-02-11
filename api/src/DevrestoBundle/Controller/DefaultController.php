@@ -9,7 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 use DevrestoBundle\Entity\App\User;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\HttpFoundation\Session\Session;
+//use Symfony\Component\HttpFoundation\Cookie;
+
+
 
 class DefaultController extends Controller
 {
@@ -17,7 +19,7 @@ class DefaultController extends Controller
 
     public function indexAction(Request $request)
     {
-//
+        //
 //        $em = $this->getDoctrine()->getManager();
 //        $user = $em->getRepository('DevrestoBundle\Entity\App\User')->findOneBy(array(
 //            'login' => 'root',
@@ -30,9 +32,8 @@ class DefaultController extends Controller
 //            $this->get('session')->set('id_user', $user->getId());
 //            $this->get('session')->set('login_user', $user->getLogin());
 //            }
-//
-//
-//        var_dump($this->get('session')->get('login_user'));
+//        var_dump($this->get('session')->get('id_user'));
+//        return $this->render('default/index.html.twig');
 //        die;
 
 
@@ -43,6 +44,7 @@ class DefaultController extends Controller
 //        die;
 //
 //        return $this->render('default/index.html.twig', array('products' => $products));
+
         $response = "toto";
         return new JsonResponse($response);
     }
@@ -51,15 +53,23 @@ class DefaultController extends Controller
     public function registerAction(Request $request)
     {
 
+        $key_len = 12;
+        $key = "";
+
         $data = json_decode($request->getContent(), true);
 
-        var_dump($data);
+        for ($i = 1 ; $i < $key_len ; $i++)
+        {
+            $key .= mt_rand(0,9);
+        }
 
         $user = new User();
 
         $user->setLogin($data['login']);
         $user->setLastname($data['lastname']);
         $user->setFirstname($data['firstname']);
+        $user->setToken($key);
+        $user->setCreatedAt(new \DateTime());
         $user->setPassword($data['password']);
 
         $validator = $this->get('validator');
@@ -79,6 +89,16 @@ class DefaultController extends Controller
 
     public function loginAction(Request $request)
     {
+//        $cookie_info = array(
+//            'name' => 'DevResto',
+//            'value' => 'GHEZEZK',
+//            'time' => time() + 3600 * 24 * 7
+//        );
+//
+//        $cookie = new Cookie($cookie_info['name'], $cookie_info['value'], $cookie_info['time'], '/', null, false, false);
+//        $response = new Response();
+//        $response->headers->setCookie($cookie);
+//        $response->send();
 
         $data = json_decode($request->getContent(), true);
 
@@ -89,13 +109,18 @@ class DefaultController extends Controller
         ));
 
         if ($user){
-            $session = $request->getSession();
-            $session->start();
-            $this->get('session')->set('id_user', $user->getId());
-            $this->get('session')->set('login_user', $user->getLogin());
-            return new Response("true", 200);
-        }
 
+            //$session = new Session();
+            $session = $request->getSession();
+            //$session->start();
+            $session->set('id_user', $user->getId());
+            $session->set('login_user', $user->getLogin());
+            $session->save();
+
+            $response = $user->getToken();
+
+            return new Response($response, 200);
+        }
         else {
             return new Response("false", 404);
         }

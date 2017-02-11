@@ -13,3 +13,7 @@ default_login:
 home_home:
     path: /home
     defaults:  { _controller: DevrestoBundle:Home:index }
+
+home_add:
+    path: /add
+    defaults:  {_controller: DevrestoBundle:Home:add }

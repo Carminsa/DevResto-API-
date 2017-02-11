@@ -3,7 +3,6 @@
 namespace DevrestoBundle\Entity\App;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -26,10 +25,6 @@ class User
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=255, unique=true)
-     *  * @Assert\Regex(
-     *     pattern     = "/^[a-z]+$/i",
-     *     htmlPattern = "^[a-zA-Z]+$"
-     * )
      */
     private $login;
 
@@ -37,10 +32,6 @@ class User
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255)
-     *    * @Assert\Regex(
-     *     pattern     = "/^[a-z]+$/i",
-     *     htmlPattern = "^[a-zA-Z]+$"
-     * )
      */
     private $lastname;
 
@@ -48,10 +39,6 @@ class User
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255)
-     *  * @Assert\Regex(
-     *     pattern     = "/^[a-z]+$/i",
-     *     htmlPattern = "^[a-zA-Z]+$"
-     * )
      */
     private $firstname;
 
@@ -59,10 +46,22 @@ class User
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
-     * @Assert\Length(min=3)
-     *
      */
     private $password;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="token", type="string", length=255)
+     */
+    private $token;
 
 
     /**
@@ -169,6 +168,54 @@ class User
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return User
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     *
+     * @return User
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
     }
 }
 
