@@ -43,7 +43,7 @@ class CartController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('DevrestoBundle\Entity\App\User')->findOneBy(array(
-            'token' => '01596736910',
+            'token' => $data['token'],
         ));
 
         if ($user)
@@ -91,8 +91,30 @@ class CartController extends Controller
         }
     }
 
-    public function create(Request $request)
+    public function createAction(Request $request)
     {
+        $data = json_decode($request->getContent(), true);
 
+        $new_product = new Product();
+
+        $new_product->setName($data['name']);
+        $new_product->setCost($data['cost']);
+        $new_product->setQuantity($data['quantity']);
+
+        $validator = $this->get('validator');
+        $listErrors = $validator->validate($new_product);
+
+
+        if (count($listErrors) > 0) {
+            return new Response("false", 404);
+        } else {
+            $query = $this->getDoctrine()->getManager();
+            $query->persist($new_product);
+            $query->flush();
+
+            return new Response("true", 200);
+        }
+
+        return new Response($data['quantit']);
     }
 }

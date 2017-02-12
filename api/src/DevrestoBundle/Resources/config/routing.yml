@@ -21,3 +21,7 @@ home_add:
 cart_index:
     path: /cart
     defaults:  {_controller: DevrestoBundle:Cart:index }
+
+car_new:
+    path: /new
+    defaults:  {_controller: DevrestoBundle:Cart:create }

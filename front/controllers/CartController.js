@@ -30,31 +30,32 @@ routeAppControllers.controller('PanierController', ['$scope', '$http', '$cookies
     }
 ]);
 
-routeAppControllers.controller('NewController', ['$scope', '$http',
+routeAppControllers.controller('NewController', ['$scope', '$http', function ($scope, $http ) {
 
-    function($scope , $http){
-
+    $scope.save = function () {
 
         let data = {
-            // token : myToken
+            name    : $scope.name,
+            cost    : $scope.cost,
+            quantity: $scope.quantity
         };
 
         let config = {
-            headers : {
+            headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
             }
         };
 
         $http.post("http://localhost:8000/new", data, config)
 
-            .then(function(data) {
-                $scope.data = data.data;
-                console.log(data.data);
+            .then(function (data) {
+                // $scope.data = data.data;
+                console.log(data);
                 // $window.location.href = '#/';
             })
-            .catch(function(data, status) {
+            .catch(function (data, status) {
                 // $scope.status = status;
                 console.log(data + ' => ' + status);
             });
     }
-]);
+}]);
