@@ -3,6 +3,7 @@
 namespace DevrestoBundle\Entity\App;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
@@ -25,6 +26,12 @@ class Product
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     *  @Assert\Regex(
+     *     pattern     = "/^[a-z]+$/i",
+     *     htmlPattern = "^[a-zA-Z]+$"
+     * )
+     *
+     * @Assert\NotNull()
      */
     private $name;
 
@@ -32,6 +39,8 @@ class Product
      * @var int
      *
      * @ORM\Column(name="cost", type="integer")
+     * @Assert\NotNull()
+     * @Assert\Type("numeric")
      */
     private $cost;
 
@@ -39,6 +48,8 @@ class Product
      * @var int
      *
      * @ORM\Column(name="quantity", type="integer")
+     * @Assert\NotNull()
+     * @Assert\Type("numeric")
      */
     private $quantity;
 

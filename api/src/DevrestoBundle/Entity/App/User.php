@@ -3,6 +3,7 @@
 namespace DevrestoBundle\Entity\App;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -25,6 +26,11 @@ class User
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=255, unique=true)
+     * @Assert\NotNull()
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z]+$/i",
+     *     htmlPattern = "^[a-zA-Z]+$"
+     * )
      */
     private $login;
 
@@ -32,6 +38,11 @@ class User
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z]+$/i",
+     *     htmlPattern = "^[a-zA-Z]+$"
+     * )
+     *  @Assert\NotNull()
      */
     private $lastname;
 
@@ -39,6 +50,11 @@ class User
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255)
+     * @Assert\Regex(
+     *     pattern     = "/^[a-z]+$/i",
+     *     htmlPattern = "^[a-zA-Z]+$"
+     * )
+     * @Assert\NotNull()
      */
     private $firstname;
 
@@ -46,6 +62,11 @@ class User
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
+     *  @Assert\Regex(
+     *     pattern     = "/^[a-z]+$/i",
+     *     htmlPattern = "^[a-zA-Z]+$"
+     * )
+     *  @Assert\NotNull()
      */
     private $password;
 
