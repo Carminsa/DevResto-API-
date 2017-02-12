@@ -1,0 +1,21 @@
+
+<div ng-controller="NewController">
+    <br />
+
+    <h3>Ajouter de nouveaux produits </h3>
+
+    <form>
+
+        <label for="name">Nom :</label>
+        <input type="text" ng-model="name" id="name" required>
+
+        <label for="cost">Coût :</label>
+        <input type="text" ng-model="cost" id="cost" required>
+
+        <label for="quantity">Quantité disponnible : </label>
+        <input type="number" min="0" ng-model="quantity" id="quantity" required>
+
+        <input type="submit" ng-click="send()" value="Enregistré">
+
+    </form>
+</div>

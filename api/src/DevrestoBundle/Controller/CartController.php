@@ -90,4 +90,9 @@ class CartController extends Controller
             return new Response($name, 200);
         }
     }
+
+    public function create(Request $request)
+    {
+
+    }
 }

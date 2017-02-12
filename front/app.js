@@ -24,6 +24,10 @@ routeApp.config(['$routeProvider',
                 templateUrl: 'views/panier/cart.html',
                 controller: 'PanierController'
             })
+            .when('/new',{
+                templateUrl: 'views/panier/create.html',
+                controller: 'NewController'
+            })
             .otherwise({
                 redirectTo: '/'
             });
