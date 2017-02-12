@@ -37,6 +37,7 @@ class CartController extends Controller
     public function indexAction(Request $request)
     {
         $all_products_name = [];
+        $array = [];
 
         $data = json_decode($request->getContent(), true);
 
@@ -47,7 +48,6 @@ class CartController extends Controller
 
         if ($user)
         {
-
             $repository = $this->getDoctrine()->getRepository('DevrestoBundle\Entity\App\Purchase');
             $purchase = $repository->findBy(array(
                 'userId' =>$user->getId(),
@@ -56,25 +56,38 @@ class CartController extends Controller
             $purchase = end($purchase);
 
             $explode = explode(',', $purchase->getProducts());
+            unset($explode[count($explode)-1]);
 
             $query = $this->getDoctrine()->getRepository('DevrestoBundle\Entity\App\Product');
 
 
             foreach ($explode as $value)
             {
-               $products = $query->findOneBy(array(
-                   'id' => $value
-               ));
+                $products = $query->findOneBy(array(
+                    'id' => $value
+                ));
 
-               array_push($all_products_name, $products);
+                array_push($all_products_name, $products);
             }
-            
-            $this->serializer = new Serializer($this->normalizers, $this->encoders);
-            $name = $this->serializer->serialize($all_products_name, 'json');
+
+
+
+            for ($i = 0 ; $i < count($all_products_name); $i++)
+            {
+                $normalizers = new \Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer();
+                $norm = $normalizers->normalize($all_products_name[$i]);
+                array_push($array, $norm['name']);
+
+//                array_push($array, $norm);
+            }
+
+            $count = array_count_values($array);
+//            print_r(array_count_values($array));
+
+
+            $name = $this->serializer->serialize($count, 'json');
 
             return new Response($name, 200);
         }
-
     }
-
 }

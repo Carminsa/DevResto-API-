@@ -4,7 +4,6 @@ routeAppControllers.controller('PanierController', ['$scope', '$http', '$cookies
 
     function($scope , $http, $cookies){
 
-
         var myToken = $cookies.get('DevResto');
 
         let data = {
@@ -20,7 +19,7 @@ routeAppControllers.controller('PanierController', ['$scope', '$http', '$cookies
         $http.post("http://localhost:8000/cart", data, config)
 
             .then(function(data) {
-                // $scope.data = data;
+                $scope.data = data.data;
                 console.log(data.data);
                 // $window.location.href = '#/';
             })
