@@ -77,6 +77,16 @@ class Purchase
         return $this->userId;
     }
 
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
     /**
      * Set products
      *

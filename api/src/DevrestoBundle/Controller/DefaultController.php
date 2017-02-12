@@ -18,11 +18,11 @@ class DefaultController extends Controller
 {
 
 
+
+
     public function indexAction(Request $request)
     {
-
-
-//        return $this->render('default/index.html.twig', array('products' => $last_purchase  ));
+        //        return $this->render('default/index.html.twig', array('products' => $last_purchase  ));
 
         $response = "toto";
         return new JsonResponse($response);

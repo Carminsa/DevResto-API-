@@ -60,7 +60,6 @@ class HomeController extends Controller
             $products .= $value . ', ';
         }
 
-
         if ($user){
 
             $session = $request->getSession();

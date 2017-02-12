@@ -20,11 +20,12 @@ routeApp.config(['$routeProvider',
                 templateUrl: 'views/home/index.html',
                 controller: 'HomeController'
             })
-            // .when('/login',{
-            //     templateUrl: 'views/auth/index.html',
-            //     controller: 'LoginController'
-                .otherwise({
-                    redirectTo: '/'
+            .when('/cart',{
+                templateUrl: 'views/panier/cart.html',
+                controller: 'PanierController'
+            })
+            .otherwise({
+                redirectTo: '/'
             });
     }
 ]);
