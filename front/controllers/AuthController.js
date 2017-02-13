@@ -72,7 +72,7 @@ routeAppControllers.controller('LoginController', ['$scope', '$http', '$window',
             })
             .catch(function (data, status) {
                 // $scope.status = status;
-                $scope.message = "Erreur dans le login ou Mot de Passe";
+                $scope.error = "Erreur dans le login ou Mot de Passe";
                 console.log(data + 'dqsdqsdqsdqs => ' + status);
             });
     }

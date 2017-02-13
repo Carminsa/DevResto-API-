@@ -903,13 +903,13 @@ body {
 /* line 244, ../sass_to_compil.scss */
 .alert-warning {
   background-color: #9c7b43;
-  color: #8a6d3b;
+  /*color: #8a6d3b;*/
 }
 
 /* line 245, ../sass_to_compil.scss */
 .alert-danger {
   background-color: #843534;
-  color: #a94442;
+  /*color: #a94442;*/
 }
 
 /* line 262, ../sass_to_compil.scss */

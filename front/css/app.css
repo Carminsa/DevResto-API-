@@ -13,3 +13,9 @@ body{
 a{
     text-decoration: none;
 }
+
+.error{
+    position: relative;
+    top:20px;
+    color: #ffffff;
+}
