@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use DevrestoBundle\Entity\App\User;
 use Symfony\Component\HttpFoundation\Response;
+
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 //use Symfony\Component\HttpFoundation\Cookie;
 
@@ -110,6 +112,7 @@ class DefaultController extends Controller
         $validator = $this->get('validator');
         $listErrors = $validator->validate($user);
 
+        var_dump($data['password']);
 
         if (count($listErrors) > 0) {
             return new Response("false", 404);
@@ -129,7 +132,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('DevrestoBundle\Entity\App\User')->findOneBy(array(
             'login' => $data['login_log'],
-            'password' => $data['password_log']
+            'password' => hash('ripemd160', $data['password_log'])
         ));
 
         if ($user){

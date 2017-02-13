@@ -62,11 +62,7 @@ class User
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
-     *  @Assert\Regex(
-     *     pattern     = "/^[a-z]+$/i",
-     *     htmlPattern = "^[a-zA-Z]+$"
-     * )
-     *  @Assert\NotNull()
+     * @Assert\NotNull()
      */
     private $password;
 
@@ -176,7 +172,7 @@ class User
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = hash('ripemd160', $password);
 
         return $this;
     }
