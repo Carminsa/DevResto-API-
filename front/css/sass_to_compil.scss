@@ -1,0 +1,296 @@
+*{
+  box-sizing:border-box
+}
+
+body{
+  margin: 0; padding: 0; font-family: sans-serif;
+}
+
+// VARIABLES BUTTONS COLOR  {BACKGROUND - COLOR - BORDER }
+$buttons_success:     #3c763d !default;
+$buttons_info:        #31708f !default;
+$buttons_warning:     #8a6d3b !default;
+$buttons_danger:      #a94442 !default;
+
+// TEXT VARIABLES + BACKGROUND
+
+$color_muted:    #808080 !default;
+$color_primary:  #000080 !default;
+$color_success:  #3c763d !default;
+$color_info:     #31708f !default;
+$color_warning:  #8a6d3b !default;
+$color_error:    #a94442 !default;
+
+$bg_muted:    lighten(#808080, 5%) !default;
+$bg_primary:  lighten(#000080, 5%) !default;
+$bg_success:  lighten(#3c763d, 5%) !default;
+$bg_info:     lighten(#31708f, 5%) !default;
+$bg_warning:  lighten(#8a6d3b,5%)  !default;
+$bg_error:    lighten(#a94442, 5%) !default;
+$bg_danger:   darken(#a94442, 10%) !default;
+
+$gray_base:              #000 !default;
+$gray_dark:              lighten($gray_base, 20%) !default;   // #333
+
+
+//VARIABLES PAR DEFAUTS
+
+$cursor_no_pointer: not-allowed !default;
+$body_background:   #fff !default;
+$line_height:       1.428571429 !default;
+
+$gray_base:              #000 !default;
+$gray_dark:              lighten($gray_base, 20%) !default;   // #333
+
+//BORDER RADIUS
+$border-radius-large:       6px !default;
+$border_radius:             4px !default;
+
+
+// VARIABLES GRID
+$columns : 12!default;
+$gutter : 20px!default;
+$medium : 640px;
+$large : 1024px;
+
+//CONTAINER
+$screen_xs:  480px !default;
+$screen_sm:  640px !default;
+$screen_md:  992px !default;
+$screen_lg: 1024px !default;
+
+$screen-xs-max:              ($screen-sm - 1) !default;
+$screen-sm-max:              ($screen-md - 1) !default;
+$screen-md-max:              ($screen-lg - 1) !default;
+
+$container_extra_small:        (480px + $gutter) !default;
+$container_xs:                 $container_extra_small !default;
+$container_tablet:             (720px + $gutter) !default;
+$container_sm:                 $container_tablet !default;
+$container_desktop:            (940px + $gutter) !default;
+$container_md:                 $container_desktop !default;
+$container_large-desktop:      (1140px + $gutter) !default;
+$container_lg:                 $container_large-desktop !default;
+
+
+// VARIABLES BUTTONS SIZE
+$btn_font_weight:          normal !default;
+$font_size_base:          14px !default;
+$font_size_xxl:           ceil(($font_size_base * 3.25)) !default;
+$font_size_large:         ceil(($font_size_base * 1.25)) !default; // ~18px
+$font_size_small:         ceil(($font_size_base * 0.85)) !default; // ~12px
+$font_size_xs_small:      ceil(($font_size_base * 0.45)) !default;
+
+
+// VARIABLES BUTTONS COLOR  {BACKGROUND - COLOR - BORDER }
+$buttons_success:     #3c763d !default;
+$buttons_info:        #31708f !default;
+$buttons_warning:     #8a6d3b !default;
+$buttons_danger:      #a94442 !default;
+
+
+$buttons_info_color:                 #fff !default;
+$buttons_success_color:              #fff !default;
+$buttons_warning_color:              #fff !default;
+$buttons_danger_color:               #fff !default;
+
+$buttons_success_border:             darken($buttons_success, 5%) !default;
+$buttons_info_border:                darken($buttons_info, 5%) !default;
+$buttons_warning_border:             darken($buttons_warning, 5%) !default;
+$buttons_danger_border:              darken($buttons_danger, 5%) !default;
+
+
+//NAVBAR VARIABLES
+$navbar_color:                             #777 !default;
+$navbar_bg_color:                          #f8f8f8 !default;
+$navbar_border_color:                      darken($navbar_bg_color, 6.5%) !default;
+$navbar_color_link:                        #777 !default;
+$navbar_link_hover_color:                  #333 !default;
+$navbar_link_hover_bg:                     transparent !default;
+$navbar_brand_hover_color:                 darken($navbar_color_link, 10%) !default;
+$navbar_background_brand_hover:            transparent !default;
+$navbar_link_active_color:                 #555 !default;
+$navbar_link_active_bg:                    darken($navbar_bg_color, 6.5%) !default;
+$navbar_link_disabled_color:               #ccc !default;
+$navbar_disabled_for_bg:                   transparent !default;
+$navbar_toggle_hover_bg:                   #ddd !default;
+$navbar_toggle_for_icon_bg:                #888 !default;
+$navbar_toggle_border_color:               #ddd !default;
+$navbar_inverse_bg:                        #222 !default;
+$navbar_inverse_link_hover_color:          #fff !default;
+
+
+$grid_float:                               ($screen-sm - 1) !default;
+$navbar-inverse-link-active-bg:            darken($navbar_inverse_bg, 10%) !default;
+$navbar-inverse-color:                     lighten($gray_dark, 15%) !default;
+$navbar_inverse_link_active_color:         $navbar_inverse_link_hover_color !default;
+$navbar_inverse_bg:                        #222 !default;
+$navbar_inverse_border:                    darken($navbar_inverse_bg, 10%) !default;
+$navbar_inverse_link_color:                lighten($gray_dark, 15%) !default;
+
+$navbar_height:                            50px !default;
+$line_height_c:                            floor((12 * 1.428571429)) !default;
+$navbar_margin_bottom:                     $line_height_c !default;
+$grid_float_breakpoint:                    $screen-sm !default;
+$navbar_border_radius:                     $border-radius !default;
+$navbar_padding_horizontal:                floor(($gutter / 2)) !default;
+
+$zindex_dropdown:                          1000 !default;
+$dropdown_border:                          rgba(0,0,0,.15) !default;
+$dropdown_divider_bg:                      #e5e5e5 !default;
+
+
+
+// GRID
+
+%col{
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding: 0 $gutter * 0.5;
+  background-color: rgba(#000, 0.2);
+  border: 1px solid rgba(#000, 0.5);
+}
+
+%clearfix{
+  &:before,
+  &:after{
+    content: "";
+    display: table;
+  }
+  &:after{clear: both;}
+  &{zoom:1;}
+}
+
+.row{
+  margin-left:  ceil(($gutter / -2));
+  margin-right: floor(($gutter / -2));
+  @extend %clearfix;
+}
+
+
+
+.col-center{margin: 0 auto; float: none; }
+@for $i from 1 through $columns{
+  .col-#{$i}{
+    @extend %col;
+    width:$i / $columns * 100%;
+  }
+  .col-offset-#{$i}{margin-left:$i / $columns * 100%; }
+  .col-push-#{$i}{left:$i / $columns * 100%;}
+  .col-pull-#{$i}{left:$i / $columns * 100%;}
+  .col--#{$i}, .col-l-#{$i} {@extend %col;}
+}
+
+@media only screen and (min-width: $medium) {
+  .col-m-center {margin: 0 auto;float: none;}
+  @for $i from 0 through $columns {
+    @if $i != 0{
+      .col-m-#{$i} {width: $i / $columns * 100%;}
+    }
+    .col-m-offset-#{$i}{margin-left:$i / $columns * 100%; }
+    .col-m-push-#{$i} {left: $i / $columns * 100%;}
+    .col-m-pull-#{$i}{left:$i / $columns * 100%;}
+  }
+}
+
+@media only screen and (min-width: $large) {
+  .col-l-center {margin: 0 auto;float: none;}
+  @for $i from 0 through $columns {
+    @if $i != 0{
+      .col-l-#{$i} {width: $i / $columns * 100%;}
+    }
+    .col-l-offset-#{$i}{margin-left:$i / $columns * 100%; }
+    .col-l-push-#{$i}{left: $i / $columns * 100%;}
+    .col-l-pull-#{$i}{left:$i / $columns * 100%;}
+  }
+}
+
+// BUTTONS COLOR
+
+@mixin box_shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+  box-shadow: $shadow;
+}
+
+@mixin button_variant($background, $color, $border) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  &:active {
+    cursor: pointer;
+    background-color: darken($background, 10%);
+    @include box_shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+  &:disabled,
+  &.disabled{
+    cursor: $cursor_no_pointer;
+    opacity: 0.65;
+    box-shadow: none;
+  }
+}
+
+.btn-success {  @include button_variant($buttons_success, $buttons_success_color, $buttons_success_border);}
+.btn-info    {  @include button_variant($buttons_info, $buttons_info_color, $buttons_info_border);}
+.btn-warning {  @include button_variant($buttons_warning, $buttons_warning_color, $buttons_warning_border);}
+.btn-danger  {  @include button_variant($buttons_danger, $buttons_danger_color, $buttons_danger_border);}
+
+
+
+// ALERT
+
+@mixin alert-variant($background, $color) {
+  background-color: $background;
+  color: $color;
+}
+
+.alert-success { @include alert-variant($bg_success, $color_success);}
+.alert-info    { @include alert-variant($bg_info,  $color_info);}
+.alert-warning { @include alert-variant($bg_warning, $color_warning);}
+.alert-danger  { @include alert-variant($bg_danger,  $color_error);}
+
+
+
+
+// NAVBARS
+
+@mixin clearfix{
+  &:before,
+  &:after{
+    content: "";
+    display: table;
+  }
+  &:after{clear: both;}
+  &{zoom:1;}
+}
+
+.navbar {
+  position: relative;
+  min-height: $navbar_height;
+  margin-bottom: $navbar_margin_bottom;
+  border: 1px solid transparent;
+
+  @include clearfix;
+
+  @media (min-width: $grid_float_breakpoint) {
+    border-radius: $navbar_border_radius;
+  }
+}
+
+
+//NAVBAR HEADER
+
+.navbar-header {
+  @include clearfix;
+
+  @media (min-width: $screen-sm) {
+    float: left;
+  }
+}
+
+// NAVBAR TOGGLE
+
+@mixin navbar-vertical-align($element-height) {
+  margin-top: (($navbar_height - $element-height) / 2);
+  margin-bottom: (($navbar_height - $element-height) / 2);
+}

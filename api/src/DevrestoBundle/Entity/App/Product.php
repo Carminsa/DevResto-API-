@@ -26,7 +26,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
-     *  @Assert\Regex(
+     * œ @Assert\Regex(
      *     pattern     = "/^[a-z]+$/i",
      *     htmlPattern = "^[a-zA-Z]+$"
      * )
