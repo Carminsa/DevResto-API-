@@ -39,9 +39,6 @@ $cursor_no_pointer: not-allowed !default;
 $body_background:   #fff !default;
 $line_height:       1.428571429 !default;
 
-$gray_base:              #000 !default;
-$gray_dark:              lighten($gray_base, 20%) !default;   // #333
-
 //BORDER RADIUS
 $border-radius-large:       6px !default;
 $border_radius:             4px !default;
@@ -148,8 +145,6 @@ $dropdown_divider_bg:                      #e5e5e5 !default;
   position: relative;
   min-height: 1px;
   padding: 0 $gutter * 0.5;
-  background-color: rgba(#000, 0.2);
-  border: 1px solid rgba(#000, 0.5);
 }
 
 %clearfix{
