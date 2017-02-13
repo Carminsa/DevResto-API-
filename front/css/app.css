@@ -8,4 +8,8 @@ body{
 
 #logo{
     color: #ffffff;
+
+}
+a{
+    text-decoration: none;
 }

@@ -1,12 +1,13 @@
 
+<div class="col-4 col-offset-5">
+    <div ng-repeat="res in data">
 
-<div ng-repeat="res in data">
+        <ul>
+            <li>Produit : {{ res.name }}</li>
+            <li>Prix : {{ res.cost }} € </li>
+        </ul>
 
-    <ul>
-        <li>{{ res.name }}</li>
-        <li>{{ res.cost }} € </li>
-    </ul>
+        <button ng-click="send(res.id)" value="{{ res.id }}">Add to cart</button>
 
-    <button ng-click="send(res.id)" value="{{ res.id }}">Add to cart</button>
-
+    </div>
 </div>

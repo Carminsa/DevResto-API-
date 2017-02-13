@@ -1,4 +1,4 @@
-
+<div class="col-4 col-offset-5">
 <div ng-controller="NewController">
     <br />
 
@@ -6,16 +6,21 @@
 
     <form>
 
-        <label for="name">Nom :</label>
+        <label for="name">Nom :</label><br>
         <input type="text" ng-model="name" id="name" required>
+        <br>
 
-        <label for="cost">Coût :</label>
+        <label for="cost">Coût :</label><br>
         <input type="text" ng-model="cost" id="cost" required>
+        <br>
 
-        <label for="quantity">Quantité disponnible : </label>
+        <label for="quantity">Quantité disponnible : </label><br>
         <input type="number" min="0" ng-model="quantity" id="quantity" required>
+        <br>
+        <br>
 
-        <input type="submit" ng-click="save()" value="Enregistré">
+        <input type="submit" ng-click="save()" value="Enregistrer">
 
     </form>
+</div>
 </div>

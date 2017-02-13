@@ -17,9 +17,6 @@ use DevrestoBundle\Entity\App\Purchase;
 class DefaultController extends Controller
 {
 
-
-
-
     public function indexAction(Request $request)
     {
         //        return $this->render('default/index.html.twig', array('products' => $last_purchase  ));
@@ -51,37 +48,37 @@ class DefaultController extends Controller
 //        die;
 //
 
-        $em = $this->getDoctrine()->getManager();
-        $last_purchase = $em->getRepository('DevrestoBundle\Entity\App\Purchase');
-        $last_purchase = $last_purchase->findBy(array(
-            'userId' => 1,
-        ));
-        $last_purchase = end($last_purchase);
-        $last_time = $last_purchase->getcreated_at()->format('Y-m-d H:i:s');
+//        $em = $this->getDoctrine()->getManager();
+//        $last_purchase = $em->getRepository('DevrestoBundle\Entity\App\Purchase');
+//        $last_purchase = $last_purchase->findBy(array(
+//            'userId' => 1,
+//        ));
+//        $last_purchase = end($last_purchase);
+//        $last_time = $last_purchase->getcreated_at()->format('Y-m-d H:i:s');
+//
+//        $last_purchase->setProducts('gsdghsdioghsdiog');
+//        $last_purchase->setCreatedAt(new \DateTime());
+//        $em->flush();
+//
+//        print_r($last_purchase);
+//        die;
+//
+//        $date = date('Y-m-d H:i:s', strtotime('-15 minutes'));
+//
+//        if ($last_purchase <  $date)
+//        {
+//            echo "yes" . "\n";
+//        }
+//        else {
+//            echo "non" . "\n";
+//        }
+//
+//        print_r($last_purchase);
+//
+//        echo "-----------------";
 
-        $last_purchase->setProducts('gsdghsdioghsdiog');
-        $last_purchase->setCreatedAt(new \DateTime());
-        $em->flush();
-
-        print_r($last_purchase);
-        die;
-
-        $date = date('Y-m-d H:i:s', strtotime('-15 minutes'));
-
-        if ($last_purchase <  $date)
-        {
-            echo "yes" . "\n";
-        }
-        else {
-            echo "non" . "\n";
-        }
-
-        print_r($last_purchase);
-
-        echo "-----------------";
-
-        print_r($date);
-        die;
+//        print_r($date);
+//        die;
 
 //        $last_purchase = count($last_purchase)-1;
 
@@ -127,17 +124,6 @@ class DefaultController extends Controller
 
     public function loginAction(Request $request)
     {
-//        $cookie_info = array(
-//            'name' => 'DevResto',
-//            'value' => 'GHEZEZK',
-//            'time' => time() + 3600 * 24 * 7
-//        );
-//
-//        $cookie = new Cookie($cookie_info['name'], $cookie_info['value'], $cookie_info['time'], '/', null, false, false);
-//        $response = new Response();
-//        $response->headers->setCookie($cookie);
-//        $response->send();
-
         $data = json_decode($request->getContent(), true);
 
         $em = $this->getDoctrine()->getManager();
