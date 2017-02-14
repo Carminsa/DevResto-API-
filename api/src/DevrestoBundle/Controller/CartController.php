@@ -81,7 +81,7 @@ class CartController extends Controller
                 $name = $this->serializer->serialize($count, 'json');
                 return new Response($name, 200);
             } else {
-                return new Response('true', 200);
+                return new Response("", 200);
             }
         }
     }
