@@ -1,17 +1,11 @@
 'use strict';
 
-
 routeAppControllers.controller('IndexController', ['$scope', '$http',
     function($scope , $http){
         $http({
             method: 'GET',
             url: 'http://127.0.0.1:8000',
         }).then(function successCallback(response) {
-            console.log('toto');
-
-            // if (response.data.length > 0) {
-            //     $scope.message = response.data[0];
-            // }
         });
     }
 ]);
@@ -36,16 +30,9 @@ routeAppControllers.controller('RegisterController', ['$scope', '$http', '$windo
         $http.post("http://localhost:8000/register", data, config)
 
             .then(function(data) {
-                // $scope.data = data;
-                console.log('success');
-                console.log(data);
                 $route.reload();
-                // $window.location.href = '#/';
             })
-
             .catch(function(data, status) {
-                // $scope.status = status;
-                console.log(data + ' => ' + status);
             });
     }
 }]);
@@ -71,10 +58,7 @@ routeAppControllers.controller('LoginController', ['$scope', '$http', '$window',
                 $window.location.href = '#/home';
             })
             .catch(function (data, status) {
-                // $scope.status = status;
                 $scope.error = "Erreur dans le login ou Mot de Passe";
-                console.log(data + 'dqsdqsdqsdqs => ' + status);
             });
     }
 }]);
-

@@ -19,25 +19,19 @@ routeAppControllers.controller('PanierController', ['$scope', '$http', '$cookies
             };
 
             $http.post("http://localhost:8000/cart", data, config)
-
                 .then(function(data) {
                     $scope.data = data.data;
-                    console.log(data.data);
-                    // $window.location.href = '#/';
                 })
                 .catch(function(data, status) {
-                    // $scope.status = status;
-                    console.log(data + ' => ' + status);
-                });
-        }
-        else {
 
+                });
+        }else {
             $window.location.href = '#/';
         }
     }
 ]);
 
-routeAppControllers.controller('NewController', ['$scope', '$http', function ($scope, $http ) {
+routeAppControllers.controller('NewController', ['$scope', '$http', function ($scope, $http) {
 
     $scope.save = function () {
 
@@ -54,15 +48,11 @@ routeAppControllers.controller('NewController', ['$scope', '$http', function ($s
         };
 
         $http.post("http://localhost:8000/new", data, config)
-
             .then(function (data) {
-                // $scope.data = data.data;
-                console.log(data);
-                // $window.location.href = '#/';
+                $scope.message = "Produit Ajouté";
             })
             .catch(function (data, status) {
-                // $scope.status = status;
-                console.log(data + ' => ' + status);
+                $scope.error = "Un problème est survenue, merci de ressayer";
             });
     }
 }]);

@@ -3,15 +3,9 @@
 namespace DevrestoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-//use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use DevrestoBundle\Entity\App\User;
-use DevrestoBundle\Entity\App\Purchase;
 use DevrestoBundle\Entity\App\Product;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-//use Symfony\Component\HttpFoundation\Cookie;
 
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
@@ -34,6 +28,10 @@ class CartController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function indexAction(Request $request)
     {
         $all_products_name = [];
@@ -70,27 +68,24 @@ class CartController extends Controller
                 array_push($all_products_name, $products);
             }
 
-
-
             for ($i = 0 ; $i < count($all_products_name); $i++)
             {
                 $normalizers = new \Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer();
                 $norm = $normalizers->normalize($all_products_name[$i]);
                 array_push($array, $norm['name']);
-
-//                array_push($array, $norm);
             }
 
             $count = array_count_values($array);
-//            print_r(array_count_values($array));
-
-
             $name = $this->serializer->serialize($count, 'json');
 
             return new Response($name, 200);
         }
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function createAction(Request $request)
     {
         $data = json_decode($request->getContent(), true);
@@ -114,7 +109,5 @@ class CartController extends Controller
 
             return new Response("true", 200);
         }
-
-        return new Response($data['quantit']);
     }
 }
