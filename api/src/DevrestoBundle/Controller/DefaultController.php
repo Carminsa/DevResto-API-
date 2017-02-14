@@ -19,12 +19,12 @@ use DevrestoBundle\Entity\App\Purchase;
 class DefaultController extends Controller
 {
 
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         //        return $this->render('default/index.html.twig', array('products' => $last_purchase  ));
 
         $response = "toto";
-        return new JsonResponse($response);
+        return new Response("true", 200);
         //
 //        $em = $this->getDoctrine()->getManager();
 //        $user = $em->getRepository('DevrestoBundle\Entity\App\User')->findOneBy(array(
