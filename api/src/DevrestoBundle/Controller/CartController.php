@@ -56,30 +56,30 @@ class CartController extends Controller
             if ($purchase) {
                 $explode = explode(',', $purchase->getProducts());
                 unset($explode[count($explode) - 1]);
+
+
+                $query = $this->getDoctrine()->getRepository('DevrestoBundle\Entity\App\Product');
+
+
+                foreach ($explode as $value)
+                {
+                    $products = $query->findOneBy(array(
+                        'id' => $value
+                    ));
+
+                    array_push($all_products_name, $products);
+                }
+
+                for ($i = 0 ; $i < count($all_products_name); $i++)
+                {
+                    $normalizers = new \Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer();
+                    $norm = $normalizers->normalize($all_products_name[$i]);
+                    array_push($array, $norm['name']);
+                }
+
+                $count = array_count_values($array);
+                $name = $this->serializer->serialize($count, 'json');
             }
-
-            $query = $this->getDoctrine()->getRepository('DevrestoBundle\Entity\App\Product');
-
-
-            foreach ($explode as $value)
-            {
-                $products = $query->findOneBy(array(
-                    'id' => $value
-                ));
-
-                array_push($all_products_name, $products);
-            }
-
-            for ($i = 0 ; $i < count($all_products_name); $i++)
-            {
-                $normalizers = new \Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer();
-                $norm = $normalizers->normalize($all_products_name[$i]);
-                array_push($array, $norm['name']);
-            }
-
-            $count = array_count_values($array);
-            $name = $this->serializer->serialize($count, 'json');
-
             return new Response($name, 200);
         }
     }
