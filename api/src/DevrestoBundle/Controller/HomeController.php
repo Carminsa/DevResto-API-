@@ -74,13 +74,30 @@ class HomeController extends Controller
                 'userId' => $user->getId(),
             ));
 
-            $last_purchase = end($last_purchase);
-            $last_time = $last_purchase->getcreated_at()->format('Y-m-d H:i:s');
-
-            $date = date('Y-m-d H:i:s', strtotime('-15 minutes'));
-//
-            if ($last_time < $date)
+            if ($last_purchase)
             {
+                $last_purchase = end($last_purchase);
+                $last_time = $last_purchase->getcreated_at()->format('Y-m-d H:i:s');
+
+                $date = date('Y-m-d H:i:s', strtotime('-15 minutes'));
+
+                if ($last_time < $date)
+                {
+                    $product = new Purchase();
+                    $product->setuser_id($this->get('session')->get('id_user'));
+                    $product->setProducts($products);
+                    $product->setCreatedAt(new \DateTime());
+                    $query = $this->getDoctrine()->getManager();
+                    $query->persist($product);
+                    $query->flush();
+                }
+                else {
+
+                    $last_purchase->setProducts($products);
+                    $last_purchase->setCreatedAt(new \DateTime());
+                    $em->flush();
+                }
+            } else {
                 $product = new Purchase();
                 $product->setuser_id($this->get('session')->get('id_user'));
                 $product->setProducts($products);
@@ -89,13 +106,6 @@ class HomeController extends Controller
                 $query->persist($product);
                 $query->flush();
             }
-            else {
-
-                $last_purchase->setProducts($products);
-                $last_purchase->setCreatedAt(new \DateTime());
-                $em->flush();
-            }
-
         }
         return new Response("true", 200);
     }
