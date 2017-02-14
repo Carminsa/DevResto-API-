@@ -53,8 +53,10 @@ class CartController extends Controller
 
             $purchase = end($purchase);
 
-            $explode = explode(',', $purchase->getProducts());
-            unset($explode[count($explode)-1]);
+            if ($purchase) {
+                $explode = explode(',', $purchase->getProducts());
+                unset($explode[count($explode) - 1]);
+            }
 
             $query = $this->getDoctrine()->getRepository('DevrestoBundle\Entity\App\Product');
 

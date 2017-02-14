@@ -39,7 +39,6 @@ class HomeController extends Controller
 
         $products = $this->serializer->serialize($products, 'json');
         return new Response($products);
-
     }
 
     /**
